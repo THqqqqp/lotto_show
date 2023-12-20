@@ -1,30 +1,69 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import {reactive, computed} from "vue";
+const dataL = reactive([{"a":"7.60","allAwayTeam":"赫塔费","allHomeTeam":"马德里竞技","awayTeam":"赫塔费","awayTeamId":511,"bettingSingle":0,"d":"4.20","goalLine":"-1","h":"1.30","homeTeam":"马竞","homeTeamId":172,"leagueBackColor":"006633","leagueId":62,"leagueName":"西班牙甲级联赛","leagueNameAbbr":"西甲","matchDate":"2023-12-20","matchId":1022486,"matchNum":"2005","matchNumStr":"周二005","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:0","sectionsNo999":"3:3","winFlag":"D"},{"a":"3.75","allAwayTeam":"纽卡斯尔联","allHomeTeam":"切尔西","awayTeam":"纽卡斯尔","awayTeamId":15,"bettingSingle":1,"d":"3.60","goalLine":"-1","h":"1.68","homeTeam":"切尔西","homeTeamId":7,"leagueBackColor":"808080","leagueId":24,"leagueName":"英格兰联赛杯","leagueNameAbbr":"英联赛杯","matchDate":"2023-12-20","matchId":1022485,"matchNum":"2004","matchNumStr":"周二004","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:1","sectionsNo999":"1:1","winFlag":"D"},{"a":"5.75","allAwayTeam":"美因茨","allHomeTeam":"多特蒙德","awayTeam":"美因茨","awayTeamId":147,"bettingSingle":0,"d":"4.45","goalLine":"-1","h":"1.35","homeTeam":"多特蒙德","homeTeamId":140,"leagueBackColor":"990099","leagueId":37,"leagueName":"德国甲级联赛","leagueNameAbbr":"德甲","matchDate":"2023-12-20","matchId":1022484,"matchNum":"2003","matchNumStr":"周二003","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:1","sectionsNo999":"1:1","winFlag":"D"},{"a":"","allAwayTeam":"曼彻斯特城","allHomeTeam":"浦和红钻","awayTeam":"曼城","awayTeamId":12,"bettingSingle":0,"d":"","goalLine":"+2","h":"","homeTeam":"浦和红钻","homeTeamId":560,"leagueBackColor":"CC9900","leagueId":14,"leagueName":"世界俱乐部杯","leagueNameAbbr":"世俱杯","matchDate":"2023-12-20","matchId":1022505,"matchNum":"2002","matchNumStr":"周二002","matchResultStatus":"2","poolStatus":"","sectionsNo1":"0:1","sectionsNo999":"0:3","winFlag":""},{"a":"1.38","allAwayTeam":"莱比锡红牛","allHomeTeam":"云达不来梅","awayTeam":"莱红牛","awayTeamId":1619,"bettingSingle":0,"d":"4.40","goalLine":"+1","h":"5.35","homeTeam":"不来梅","homeTeamId":153,"leagueBackColor":"990099","leagueId":37,"leagueName":"德国甲级联赛","leagueNameAbbr":"德甲","matchDate":"2023-12-20","matchId":1022483,"matchNum":"2001","matchNumStr":"周二001","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"1:1","winFlag":"D"},{"a":"4.05","allAwayTeam":"开罗国民","allHomeTeam":"弗鲁米嫩塞","awayTeam":"开罗国民","awayTeamId":859,"bettingSingle":0,"d":"3.15","goalLine":"-1","h":"1.74","homeTeam":"弗鲁米嫩","homeTeamId":572,"leagueBackColor":"CC9900","leagueId":14,"leagueName":"世界俱乐部杯","leagueNameAbbr":"世俱杯","matchDate":"2023-12-19","matchId":1022461,"matchNum":"1005","matchNumStr":"周一005","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"2:0","winFlag":"H"},{"a":"3.10","allAwayTeam":"波尔图","allHomeTeam":"里斯本竞技","awayTeam":"波尔图","awayTeamId":937,"bettingSingle":0,"d":"3.13","goalLine":"-1","h":"2.01","homeTeam":"里斯本","homeTeamId":1060,"leagueBackColor":"008888","leagueId":55,"leagueName":"葡萄牙超级联赛","leagueNameAbbr":"葡超","matchDate":"2023-12-19","matchId":1022445,"matchNum":"1004","matchNumStr":"周一004","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:0","sectionsNo999":"2:0","winFlag":"H"},{"a":"5.10","allAwayTeam":"阿拉维斯","allHomeTeam":"赫罗纳","awayTeam":"阿拉维斯","awayTeamId":171,"bettingSingle":1,"d":"3.95","goalLine":"-1","h":"1.45","homeTeam":"赫罗纳","homeTeamId":1885,"leagueBackColor":"006633","leagueId":62,"leagueName":"西班牙甲级联赛","leagueNameAbbr":"西甲","matchDate":"2023-12-19","matchId":1022444,"matchNum":"1003","matchNumStr":"周一003","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"2:0","sectionsNo999":"3:0","winFlag":"H"},{"a":"1.33","allAwayTeam":"莱切斯特城","allHomeTeam":"伯明翰","awayTeam":"莱切斯特","awayTeamId":50,"bettingSingle":0,"d":"4.35","goalLine":"+1","h":"6.35","homeTeam":"伯明翰","homeTeamId":3,"leagueBackColor":"CC3300","leagueId":20,"leagueName":"英格兰冠军联赛","leagueNameAbbr":"英冠","matchDate":"2023-12-19","matchId":1022443,"matchNum":"1002","matchNumStr":"周一002","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:2","sectionsNo999":"2:3","winFlag":"A"},{"a":"3.12","allAwayTeam":"惠灵顿凤凰","allHomeTeam":"麦克阿瑟FC","awayTeam":"惠灵顿","awayTeamId":1139,"bettingSingle":0,"d":"3.65","goalLine":"-1","h":"1.84","homeTeam":"麦克阿瑟","homeTeamId":1025286,"leagueBackColor":"FF7000","leagueId":2,"leagueName":"澳大利亚超级联赛","leagueNameAbbr":"澳超","matchDate":"2023-12-18","matchId":1022442,"matchNum":"1001","matchNumStr":"周一001","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:1","sectionsNo999":"0:3","winFlag":"A"},{"a":"2.04","allAwayTeam":"本菲卡","allHomeTeam":"布拉加","awayTeam":"本菲卡","awayTeamId":267,"bettingSingle":0,"d":"3.40","goalLine":"+1","h":"2.82","homeTeam":"布拉加","homeTeamId":269,"leagueBackColor":"008888","leagueId":55,"leagueName":"葡萄牙超级联赛","leagueNameAbbr":"葡超","matchDate":"2023-12-18","matchId":1022441,"matchNum":"7021","matchNumStr":"周日021","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:1","sectionsNo999":"0:1","winFlag":"A"},{"a":"9.75","allAwayTeam":"比利亚雷亚尔","allHomeTeam":"皇家马德里","awayTeam":"比利亚雷","awayTeamId":679,"bettingSingle":0,"d":"6.25","goalLine":"-2","h":"1.14","homeTeam":"皇马","homeTeamId":664,"leagueBackColor":"006633","leagueId":62,"leagueName":"西班牙甲级联赛","leagueNameAbbr":"西甲","matchDate":"2023-12-18","matchId":1022440,"matchNum":"7020","matchNumStr":"周日020","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"2:0","sectionsNo999":"4:1","winFlag":"H"},{"a":"1.67","allAwayTeam":"巴黎圣日尔曼","allHomeTeam":"里尔","awayTeam":"巴黎圣曼","awayTeamId":187,"bettingSingle":0,"d":"3.60","goalLine":"+1","h":"3.80","homeTeam":"里尔","homeTeamId":180,"leagueBackColor":"6B2B2B","leagueId":32,"leagueName":"法国甲级联赛","leagueNameAbbr":"法甲","matchDate":"2023-12-18","matchId":1022439,"matchNum":"7019","matchNumStr":"周日019","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"1:1","winFlag":"D"},{"a":"1.66","allAwayTeam":"国际米兰","allHomeTeam":"拉齐奥","awayTeam":"国际米兰","awayTeamId":123,"bettingSingle":0,"d":"3.35","goalLine":"+1","h":"4.20","homeTeam":"拉齐奥","homeTeamId":125,"leagueBackColor":"0066FF","leagueId":40,"leagueName":"意大利甲级联赛","leagueNameAbbr":"意甲","matchDate":"2023-12-18","matchId":1022438,"matchNum":"7018","matchNumStr":"周日018","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:1","sectionsNo999":"0:2","winFlag":"A"},{"a":"6.10","allAwayTeam":"斯图加特","allHomeTeam":"拜仁慕尼黑","awayTeam":"斯图加特","awayTeamId":152,"bettingSingle":0,"d":"5.15","goalLine":"-1","h":"1.28","homeTeam":"拜仁","homeTeamId":137,"leagueBackColor":"990099","leagueId":37,"leagueName":"德国甲级联赛","leagueNameAbbr":"德甲","matchDate":"2023-12-18","matchId":1022437,"matchNum":"7017","matchNumStr":"周日017","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:0","sectionsNo999":"3:0","winFlag":"H"},{"a":"3.07","allAwayTeam":"罗马","allHomeTeam":"博洛尼亚","awayTeam":"罗马","awayTeamId":132,"bettingSingle":0,"d":"2.75","goalLine":"-1","h":"2.22","homeTeam":"博洛尼亚","homeTeamId":118,"leagueBackColor":"0066FF","leagueId":40,"leagueName":"意大利甲级联赛","leagueNameAbbr":"意甲","matchDate":"2023-12-18","matchId":1022436,"matchNum":"7016","matchNumStr":"周日016","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:0","sectionsNo999":"2:0","winFlag":"H"},{"a":"9.00","allAwayTeam":"法兰克福","allHomeTeam":"勒沃库森","awayTeam":"法兰克福","awayTeamId":170,"bettingSingle":0,"d":"5.55","goalLine":"-2","h":"1.18","homeTeam":"勒沃库森","homeTeamId":146,"leagueBackColor":"990099","leagueId":37,"leagueName":"德国甲级联赛","leagueNameAbbr":"德甲","matchDate":"2023-12-18","matchId":1022435,"matchNum":"7015","matchNumStr":"周日015","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:0","sectionsNo999":"3:0","winFlag":"H"},{"a":"6.70","allAwayTeam":"曼彻斯特联","allHomeTeam":"利物浦","awayTeam":"曼联","awayTeamId":13,"bettingSingle":1,"d":"5.45","goalLine":"-2","h":"1.24","homeTeam":"利物浦","homeTeamId":11,"leagueBackColor":"FF3333","leagueId":25,"leagueName":"英格兰超级联赛","leagueNameAbbr":"英超","matchDate":"2023-12-18","matchId":1022434,"matchNum":"7014","matchNumStr":"周日014","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"0:0","winFlag":"D"},{"a":"5.65","allAwayTeam":"皇家贝蒂斯","allHomeTeam":"皇家社会","awayTeam":"贝蒂斯","awayTeamId":505,"bettingSingle":0,"d":"3.80","goalLine":"-1","h":"1.43","homeTeam":"皇家社会","homeTeamId":675,"leagueBackColor":"006633","leagueId":62,"leagueName":"西班牙甲级联赛","leagueNameAbbr":"西甲","matchDate":"2023-12-17","matchId":1022433,"matchNum":"7013","matchNumStr":"周日013","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"0:0","winFlag":"D"},{"a":"4.10","allAwayTeam":"科隆","allHomeTeam":"弗赖堡","awayTeam":"科隆","awayTeamId":166,"bettingSingle":0,"d":"3.60","goalLine":"-1","h":"1.62","homeTeam":"弗赖堡","homeTeamId":141,"leagueBackColor":"990099","leagueId":37,"leagueName":"德国甲级联赛","leagueNameAbbr":"德甲","matchDate":"2023-12-17","matchId":1022432,"matchNum":"7012","matchNumStr":"周日012","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"2:0","winFlag":"H"},{"a":"2.93","allAwayTeam":"斯特拉斯堡","allHomeTeam":"洛里昂","awayTeam":"斯特拉斯","awayTeamId":191,"bettingSingle":0,"d":"2.80","goalLine":"-1","h":"2.27","homeTeam":"洛里昂","homeTeamId":750,"leagueBackColor":"6B2B2B","leagueId":32,"leagueName":"法国甲级联赛","leagueNameAbbr":"法甲","matchDate":"2023-12-17","matchId":1022431,"matchNum":"7011","matchNumStr":"周日011","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:1","sectionsNo999":"1:2","winFlag":"A"},{"a":"6.60","allAwayTeam":"维罗纳","allHomeTeam":"佛罗伦萨","awayTeam":"维罗纳","awayTeamId":1639,"bettingSingle":0,"d":"4.05","goalLine":"-1","h":"1.35","homeTeam":"佛罗伦萨","homeTeamId":122,"leagueBackColor":"0066FF","leagueId":40,"leagueName":"意大利甲级联赛","leagueNameAbbr":"意甲","matchDate":"2023-12-17","matchId":1022430,"matchNum":"7010","matchNumStr":"周日010","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"1:0","winFlag":"H"},{"a":"2.80","allAwayTeam":"萨索洛","allHomeTeam":"乌迪内斯","awayTeam":"萨索洛","awayTeamId":1509,"bettingSingle":0,"d":"3.05","goalLine":"-1","h":"2.20","homeTeam":"乌迪内斯","homeTeamId":135,"leagueBackColor":"0066FF","leagueId":40,"leagueName":"意大利甲级联赛","leagueNameAbbr":"意甲","matchDate":"2023-12-17","matchId":1022429,"matchNum":"7009","matchNumStr":"周日009","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:0","sectionsNo999":"2:2","winFlag":"D"},{"a":"5.70","allAwayTeam":"布赖顿","allHomeTeam":"阿森纳","awayTeam":"布赖顿","awayTeamId":41,"bettingSingle":1,"d":"4.50","goalLine":"-1","h":"1.35","homeTeam":"阿森纳","homeTeamId":1,"leagueBackColor":"FF3333","leagueId":25,"leagueName":"英格兰超级联赛","leagueNameAbbr":"英超","matchDate":"2023-12-17","matchId":1022428,"matchNum":"7008","matchNumStr":"周日008","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"2:0","winFlag":"H"},{"a":"1.99","allAwayTeam":"阿斯顿维拉","allHomeTeam":"布伦特福德","awayTeam":"维拉","awayTeamId":2,"bettingSingle":0,"d":"3.30","goalLine":"+1","h":"3.00","homeTeam":"布伦特","homeTeamId":69,"leagueBackColor":"FF3333","leagueId":25,"leagueName":"英格兰超级联赛","leagueNameAbbr":"英超","matchDate":"2023-12-17","matchId":1022427,"matchNum":"7007","matchNumStr":"周日007","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:0","sectionsNo999":"1:2","winFlag":"A"},{"a":"3.50","allAwayTeam":"狼队","allHomeTeam":"西汉姆联","awayTeam":"狼队","awayTeamId":64,"bettingSingle":0,"d":"3.35","goalLine":"-1","h":"1.80","homeTeam":"西汉姆联","homeTeamId":62,"leagueBackColor":"FF3333","leagueId":25,"leagueName":"英格兰超级联赛","leagueNameAbbr":"英超","matchDate":"2023-12-17","matchId":1022426,"matchNum":"7006","matchNumStr":"周日006","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"2:0","sectionsNo999":"3:0","winFlag":"H"},{"a":"1.60","allAwayTeam":"特温特","allHomeTeam":"鹿特丹斯巴达","awayTeam":"特温特","awayTeamId":254,"bettingSingle":0,"d":"3.60","goalLine":"+1","h":"4.25","homeTeam":"鹿斯巴达","homeTeamId":258,"leagueBackColor":"FF6699","leagueId":17,"leagueName":"荷兰甲级联赛","leagueNameAbbr":"荷甲","matchDate":"2023-12-17","matchId":1022425,"matchNum":"7005","matchNumStr":"周日005","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:1","sectionsNo999":"2:2","winFlag":"D"},{"a":"3.00","allAwayTeam":"马洛卡","allHomeTeam":"阿尔梅里亚","awayTeam":"马洛卡","awayTeamId":533,"bettingSingle":0,"d":"2.88","goalLine":"+1","h":"2.18","homeTeam":"阿梅里亚","homeTeamId":959,"leagueBackColor":"006633","leagueId":62,"leagueName":"西班牙甲级联赛","leagueNameAbbr":"西甲","matchDate":"2023-12-17","matchId":1022424,"matchNum":"7004","matchNumStr":"周日004","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"0:0","sectionsNo999":"0:0","winFlag":"D"},{"a":"2.22","allAwayTeam":"凯泽斯劳滕","allHomeTeam":"不伦瑞克","awayTeam":"凯泽","awayTeamId":145,"bettingSingle":0,"d":"3.15","goalLine":"+1","h":"2.69","homeTeam":"不伦瑞克","homeTeamId":163,"leagueBackColor":"DB31EE","leagueId":34,"leagueName":"德国乙级联赛","leagueNameAbbr":"德乙","matchDate":"2023-12-17","matchId":1022423,"matchNum":"7003","matchNumStr":"周日003","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"1:1","sectionsNo999":"2:1","winFlag":"H"},{"a":"5.90","allAwayTeam":"蒙扎","allHomeTeam":"AC米兰","awayTeam":"蒙扎","awayTeamId":1039249,"bettingSingle":0,"d":"4.10","goalLine":"-1","h":"1.38","homeTeam":"AC米兰","homeTeamId":116,"leagueBackColor":"0066FF","leagueId":40,"leagueName":"意大利甲级联赛","leagueNameAbbr":"意甲","matchDate":"2023-12-17","matchId":1022422,"matchNum":"7002","matchNumStr":"周日002","matchResultStatus":"2","poolStatus":"Payout","sectionsNo1":"2:0","sectionsNo999":"3:0","winFlag":"H"}])
+const filteredData = computed(() => {
+  return dataL.filter(item => item.matchNumStr.includes("001"));
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>赛事日期</th>
+        <th>赛事编号</th>
+        <th>联赛</th>
+        <th>主队（让球）vs客队</th>
+        <th>半场比分</th>
+        <th>全场比分</th>
+        <th>胜</th>
+        <th>平</th>
+        <th>负</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="item in filteredData" :key="item.matchId">
+        <td>{{ item.matchDate }}</td>
+        <td>{{ item.matchNumStr }}</td>
+        <td>{{ item.leagueName }}</td>
+        <td>{{ item.homeTeam }}({{ item.goalLine }})VS{{ item.awayTeam }}</td>
+        <td>{{ item.sectionsNo1 }}</td>
+        <td>{{ item.sectionsNo999 }}</td>
+        <td>{{ item.h }}</td>
+        <td>{{ item.d }}</td>
+        <td>{{ item.a }}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.table th,
+.table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
 }
 </style>
